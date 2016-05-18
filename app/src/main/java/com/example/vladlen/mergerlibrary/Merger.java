@@ -111,6 +111,10 @@ public class Merger {
     private static String runProcess(String ffmpegPath, String audioPath, String imgPath) throws IOException, InterruptedException {
         Log.d(TAG, "merging started");
         String videoPath = outPath + "/mergerVideo.mp4";
+        File file = new File(videoPath);
+        if (file.exists()){
+            file.delete();
+        }
         Process nativeApp = Runtime.getRuntime().exec(ffmpegPath + " -loop 1 -r 30 -i " + imgPath + " -i " + audioPath + " -shortest -c:v libx264 -pix_fmt yuvj420p -preset veryfast " + videoPath);
         StringBuffer output = new StringBuffer();
 
@@ -139,6 +143,7 @@ public class Merger {
 
         Log.d(TAG, "merging ended");
         //return nativeOutput;
+
         return videoPath;
     }
 
