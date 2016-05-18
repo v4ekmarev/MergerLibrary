@@ -1,0 +1,12 @@
+1. add .aar file in libs
+2. settings build.gradle
+2.1 add in app gradle compile(name:'merger', ext:'aar') 
+2.2 add in project gradle: 
+	allprojects {
+	    repositories {
+		jcenter()
+		flatDir {
+		    dirs 'libs'
+		}
+	    }
+	}
