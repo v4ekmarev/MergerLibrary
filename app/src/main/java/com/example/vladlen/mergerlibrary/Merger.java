@@ -71,6 +71,11 @@ public class Merger {
         comboImage.drawBitmap(bottomImage, 0f, 0f, null);
         comboImage.drawBitmap(topImage, leftPadding, topPadding, null);
 
+        File file = new File(outPath + "/mergingImg.png");
+        if (file.exists()) {
+            file.delete();
+        }
+
         OutputStream os = null;
         try {
             os = new FileOutputStream(outPath + "/mergingImg.png");
